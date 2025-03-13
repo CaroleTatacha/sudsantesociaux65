@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syndicat Professionnel</title>
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #e94e1b;
+            --secondary-color: #2d2d2d;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --max-width: 1200px;
+        }
+
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d04417;
+            text-decoration: none;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+        }
+
+        .features-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 20px;
+        }
+
+        .feature-content h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* News Section */
+        .news {
+            padding: 60px 0;
+        }
+
+        .news-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-date {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .news-title {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* Call to Action */
+        .cta {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--medium-gray);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Syndicat Pro</div>
+            <div class="mobile-menu-btn">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="valeurs.html">Nos valeurs</a></li>
+                    <li><a href="actions.html">Nos actions</a></li>
+                    <li><a href="adhesion.html">Adhésion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page d'accueil -->
+    <div id="home-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Ensemble, défendons nos droits</h1>
+                <p>Notre syndicat professionnel s'engage à promouvoir et défendre les intérêts de tous les travailleurs du secteur, pour des conditions de travail justes et équitables.</p>
+                <a href="adhesion.html" class="btn">Rejoignez-nous</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="features-heading">
+                    <h2>Nos engagements</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="img2.jpg" alt="Défense des droits">
+                        <div class="feature-content">
+                            <h3>Défense des droits</h3>
+                            <p>Nous assurons la défense individuelle et collective des droits des travailleurs face aux employeurs et aux institutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <img src="/api/placeholder/400/320" alt="Formation syndicale">
+                        <div class="feature-content">
+                            <h3>Formation syndicale</h3>
+                            <p>Nous proposons des formations pour comprendre vos droits, le droit du travail et les techniques de négociation collective.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <img src="img3.jpg" alt="Solidarité">
+                        <div class="feature-content">
+                            <h3>Solidarité</h3>
+                            <p>Nous développons une solidarité effective entre tous les travailleurs, quels que soient leur statut ou leur origine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news">
+            <div class="container">
+                <div class="news-heading">
+                    <h2>Actualités</h2>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-content">
+                            <div class="news-date">13 Mars 2025</div>
+                            <h3 class="news-title">Mobilisation nationale le 1er avril</h3>
+                            <p>Face au gel des salaires et à la dégradation des conditions de travail, nous appelons à une journée de mobilisation nationale.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-content">
+                            <div class="news-date">4 Mars 2025</div>
+                            <h3 class="news-title">Égalité des droits pour tous les territoires</h3>
+                            <p>Notre syndicat réaffirme son engagement pour l'égalité des droits dans tous les territoires, y compris les territoires ultramarins.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-content">
+                            <div class="news-date">24 Février 2025</div>
+                            <h3 class="news-title">Réforme du secteur : notre analyse</h3>
+                            <p>Nous publions notre analyse détaillée de la réforme du secteur et ses conséquences pour les travailleurs.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta">
+            <div class="container">
+                <h2>Rejoignez notre combat pour plus de justice sociale</h2>
+                <p>Ensemble, nous sommes plus forts. Adhérez à notre syndicat pour défendre vos droits et participer à la construction d'un monde du travail plus juste.</p>
+                <a href="adhesion.html" class="btn-outline">Adhérer maintenant</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Nos valeurs (à afficher/masquer avec JS) -->
+    <div id="valeurs-page" style="display: none;">
+        <section class="hero">
+            <div class="container">
+                <h1>Nos valeurs</h1>
+                <p>Les principes fondamentaux qui guident notre action syndicale au quotidien.</p>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Démocratie</h3>
+                            <p>Notre syndicat s'organise selon les principes du fédéralisme, respectant l'autonomie des structures, leur expression diverse et complémentaire pour une solidarité et une démocratie effectives.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Solidarité</h3>
+                            <p>Nous combattons toutes formes d'exploitation, d'exclusion sociale, de racisme et de sexisme. Nous défendons une société plus juste et égalitaire.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Auto-gestion</h3>
+                            <p>Nous développons des modes d'organisation démocratiques, unitaires et auto-gérés : assemblées générales, coordinations, comités de grève, collectifs...</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Transparence</h3>
+                            <p>Nous favorisons l'information en direction des salariés, condition pour qu'ils prennent eux-mêmes en charge leurs revendications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Nos actions (à afficher/masquer avec JS) -->
+    <div id="actions-page" style="display: none;">
+        <section class="hero">
+            <div class="container">
+                <h1>Nos actions</h1>
+                <p>Découvrez les initiatives et mobilisations que nous menons pour défendre les droits des travailleurs.</p>
+            </div>
+        </section>
+        
+        <section class="news">
+            <div class="container">
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="/api/placeholder/400/320" alt="Manifestation">
+                        <div class="news-content">
+                            <div class="news-date">1er Avril 2025</div>
+                            <h3 class="news-title">Mobilisation nationale</h3>
+                            <p>Public-Privé, Syndicats et Collectifs mobilisons-nous ! La situation dans notre secteur est loin de nous faire rire ! Nos salaires stagnent depuis deux ans et demi, nos conditions de travail se dégradent.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="/api/placeholder/400/320" alt="Formation">
+                        <div class="news-content">
+                            <div class="news-date">Mensuel</div>
+                            <h3 class="news-title">Formations syndicales</h3>
+                            <p>Chaque mois, nous organisons des sessions de formation sur le droit du travail, les techniques de négociation et la défense des droits individuels et collectifs.</p>
+                            <a href="#" class="btn">S'inscrire</a>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="img1.jpg" alt="Solidarité">
+                        <div class="news-content">
+                            <div class="news-date">En continu</div>
+                            <h3 class="news-title">Soutien juridique</h3>
+                            <p>Notre équipe juridique propose un accompagnement personnalisé pour tous les adhérents confrontés à des difficultés dans leur environnement professionnel.</p>
+                            <a href="#" class="btn">Prendre rendez-vous</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Adhésion (à afficher/masquer avec JS) -->
+    <div id="adhesion-page" style="display: none;">
+        <section class="hero">
+            <div class="container">
+                <h1>Adhésion</h1>
+                <p>Rejoignez notre syndicat et participez à la défense collective des droits des travailleurs.</p>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <div class="features-heading">
+                    <h2>Pourquoi adhérer ?</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Défense individuelle</h3>
+                            <p>Bénéficiez d'un accompagnement personnalisé en cas de conflit avec votre employeur ou de problème lié à votre situation professionnelle.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Force collective</h3>
+                            <p>Participez à un mouvement collectif pour améliorer les conditions de travail et les droits de l'ensemble des travailleurs du secteur.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Information</h3>
+                            <p>Accédez à des informations régulières sur vos droits, l'actualité syndicale et sociale, et les évolutions législatives qui vous concernent.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Formation</h3>
+                            <p>Participez à nos formations syndicales pour mieux comprendre et défendre vos droits individuels et collectifs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <div class="container">
+                <h2>Comment adhérer ?</h2>
+                <p>L'adhésion est simple et adaptée à votre situation professionnelle. Le montant de la cotisation est calculé en fonction de votre revenu.</p>
+                <a href="#" class="btn-outline">Télécharger le bulletin d'adhésion</a>
+                <p style="margin-top: 20px;">Vous pouvez également adhérer en ligne en remplissant le formulaire ci-dessous :</p>
+            </div>
+        </section>
+        
+        <section class="news">
+            <div class="container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" id="telephone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="adresse">Adresse</label>
+                        <input type="text" id="adresse" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeur">Employeur</label>
+                        <input type="text" id="employeur" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profession">Profession</label>
+                        <input type="text" id="profession" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Soumettre ma demande d'adhésion</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Contact (à afficher/masquer avec JS) -->
+    <div id="contact-page" style="display: none;">
+        <section class="hero">
+            <div class="container">
+                <h1>Contact</h1>
+                <p>N'hésitez pas à nous contacter pour toute question ou demande d'information.</p>
+            </div>
+        </section>
+        
+        <section class="news">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Coordonnées</h3>
+                            <p><strong>Adresse :</strong> 123 rue du Syndicat, 75000 Paris</p>
+                            <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
+                            <p><strong>Email :</strong> contact@syndicatpro.org</p>
+                            <p><strong>Horaires :</strong> Du lundi au vendredi, de 9h à 18h</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h3>Formulaire de contact</h3>
+                            <form class="contact-form">
+                                <div class="form-group">
+                                    <label for="contact-nom">Nom</label>
+                                    <input type="text" id="contact-nom" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email</label>
+                                    <input type="email" id="contact-email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-sujet">Sujet</label>
+                                    <input type="text" id="contact-sujet" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-message">Message</label>
+                                    <textarea id="contact-message" class="form-control" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn">Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Syndicat Pro</h3>
+                <p>Nous défendons les droits des travailleurs depuis plus de 20 ans. Notre engagement : solidarité, démocratie et justice sociale.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">TW</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">YT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="valeurs.html">Nos valeurs</a></li>
+                    <li><a href="actions.html">Nos actions</a></li>
+                    <li><a href="adhesion.html">Adhésion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ressources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Droits des travailleurs</a></li>
+                    <li><a href="#">Boîte à outils</a></li>
+                    <li><a href="#">Agenda</a></li>
+                    <li><a href="#">Publications</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Inscrivez-vous pour recevoir nos actualités et informations importantes.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Votre email">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">S'inscrire</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 Syndicat Pro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript pour la navigation -->
+    <script>
+        // Toggle mobile menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Simple page routing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get current page from URL or default to home
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Hide all pages
+            document.querySelectorAll('[id$="-page"]').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show current page
+            if (currentPage === 'index.html' || currentPage === '') {
+                document.getElementById('home-page').style.display = 'block';
+            } else if (currentPage === 'valeurs.html') {
+                document.getElementById('valeurs-page').style.display = 'block';
+            } else if (currentPage === 'actions.html') {
+                document.getElementById('actions-page').style.display = 'block';
+            } else if (currentPage === 'adhesion.html') {
+                document.getElementById('adhesion-page').style.display = 'block';
+            } else if (currentPage === 'contact.html') {
+                document.getElementById('contact-page').style.display = 'block';
+            } else {
+                document.getElementById('home-page').style.display = 'block';
+            }
+            
+            // Set active navigation
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.style.color = 'var(--primary-color)';
+                    link.style.fontWeight = 'bold';
